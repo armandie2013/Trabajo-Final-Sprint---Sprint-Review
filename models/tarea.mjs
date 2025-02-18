@@ -9,7 +9,7 @@ export default class tarea {
     this.completado = true;
   }
   validar() {
-    if (!this.titulo || this.titulo.trim() === "") {
+    if (!this.titulo || this.titulo.trim() === " ") {
       throw new Error("El titulo de la tarea es obligatorio.");
     }
   }
