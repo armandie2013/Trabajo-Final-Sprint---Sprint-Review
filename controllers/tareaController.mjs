@@ -1,26 +1,26 @@
 import {
-  listaTareas,
-  listaTareasCompletadas,
+  listarTareas,
+  listarTareasCompletadas,
   crearTarea,
-  completarTarea,
+  completarTareaController,
   eliminarTarea,
-} from "/..services/tareaService.mjs";
+} from "../services/tareaService.mjs";
 import {
   renderizarListaTareas,
   renderizarMensaje,
 } from "../views/tareaVista.mjs";
 
-export function listaTareasController(req, res) {
+export function listarTareasController(req, res) {
   const tareas = listarTareas();
   res.send(renderizarListaTareas(tareas));
 }
 
-export function listaTareasCompletadasController(req, res) {
-  const tareasCompletadas = listaTareasCompletadas();
+export function listarTareasCompletadasController(req, res) {
+  const tareasCompletadas = listarTareasCompletadas();
   res.send(renderizarListaTareas(tareasCompletadas));
 }
 
-export function crearTareasController(req, res) {
+export function crearTareaController(req, res) {
   const { id, titulo, descripcion, completado } = req.body;
   crearTarea(id, titulo, descripcion, completado);
   res.send(renderizarListaTareas("Tarea creada con éxito."));

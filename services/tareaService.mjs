@@ -1,14 +1,14 @@
 import tareaRepository from "../repository/tareaRepository.mjs";
 import tarea from "../models/tarea.mjs";
 
-const tareaRepo = tareaRepository();
+const tareaRepo = new tareaRepository();
 
 export function listarTareas() {
-  return tareaRepo.obteberTodas();
+  return tareaRepo.obtenerTodas();
 }
 
 export function listaTareasCompletadas() {
-  const tareas = tareaRepo.obteberTodas();
+  const tareas = tareaRepo.obtenerTodas();
   return tareas.filter((tarea = tarea.completado));
 }
 
@@ -21,7 +21,7 @@ export function crearTarea(id, titulo, descripcion, completado = false) {
 }
 
 export function completarTarea(id) {
-  const tareas = tareaRepo.obteberTodas();
+  const tareas = tareaRepo.obtenerTodas();
   const tarea = tareas.find((tarea) => tarea.id === id);
   if (tarea) {
     tarea.completar();
@@ -30,7 +30,7 @@ export function completarTarea(id) {
 }
 
 export function eliminarTarea(id) {
-  let tareas = tareaRepo.obteberTodas();
+  let tareas = tareaRepo.obtenerTodas();
   tareas = tareas.filter((tarea) => tarea.id !== id);
   tareaRepo.guardar(tareas);
 }
