@@ -12,4 +12,25 @@ export function listaTareasCompletadas(){
     return tareas.filter(tarea=tarea.completado);
 }
 
-export function
+export function crearTarea(id,titulo, descripcion, completado=false){
+    const tareas=tareaRepo.obtenerTodas();
+    const nuevaTarea=new tarea(id,titulo,descripcion,completado);
+    nuevaTarea.validar();
+    tareas.push(nuevaTarea);
+    tareaRepo.guardar(tareas);
+}
+
+export function completarTarea(id){
+    const tareas=tareaRepo.obteberTodas();
+    const tarea=tareas.find(tarea=>tarea.id===id);
+    if (tarea){
+        tarea.completar();
+        tareaRepo.guardar(tareas);
+    }
+}
+
+export function eliminarTarea(id){
+    let tareas=tareaRepo.obteberTodas();
+    tareas=tareas.filter(tarea=>tarea.id!==id);
+    tareaRepo.guardar(tareas);
+}
