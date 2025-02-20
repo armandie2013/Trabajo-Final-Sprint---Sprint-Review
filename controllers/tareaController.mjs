@@ -28,7 +28,7 @@ export function crearTareaController(req, res) {
 
 export function completarTareaController(req, res) {
   const { id } = req.params;
-  eliminarTarea(parseInt(id));
+  completarTarea(parseInt(id));
   res.send(renderizarMensaje("Tarea marcada como completada"));
 }
 
